@@ -31,4 +31,5 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = 'helpers.exception.handler404'
+handler404 = 'sweetshop.main.views.handler404_view'
+handler500 = 'sweetshop.main.views.handler500_view'
