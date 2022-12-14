@@ -45,6 +45,7 @@ class HelpView(views.TemplateView):
         context['help'] = get_object_or_404(AdditionalLinkInformation, section_name='help')
         return context
 
+
 class ServicesView(views.TemplateView):
     template_name = 'main/services.html'
 
@@ -88,3 +89,9 @@ def search(request):
             return render(request, 'main/search.html')
 
 
+def handler404_view(request, exception):
+    return render(request, 'not-found.html', status=404)
+
+
+def handler500_view(request):
+    return render(request, 'not-found.html', status=500)
