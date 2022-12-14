@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cake Delights </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ie8.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ie7.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ie6.css' %}">
+</head>
+<body>
+<div id="header">
+    <div>
+        <div>
+            <div id="logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a></div>
+            <div>
+                {% if request.user.is_authenticated %}
+                    <div><a href={% url 'logout user' %}>Sign out</a><a href={% url 'help' %}>Help</a><a
+                            href="{% url 'terms of use' %}">Terms of use</a></div>
+                {% else %}
+                    <div><a href="{% url 'register user' %}">Register</a> <a href="{% url 'login user' %}">Sign in</a>
+                        <a href={% url 'logout user' %}>Sign out</a><a href={% url 'help' %}>Help</a><a
+                                href="{% url 'terms of use' %}">Terms of use</a></div>
+                {% endif %}
+                {% include 'base/search_bar.html' %}
+            </div>
+        </div>
+        <ul>
+            <li class="current"><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'product type' %}">The Pastry shop</a></li>
+            <li><a href="{% url 'blog post' %}">Blog</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            {#            <li><a href="{% url 'details profile' pk=request.user.pk %}">Profile</a></li>#}
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'details profile' pk=request.user.pk %}">Profile</a></li>
+            {% else %}
+                <li><a href="{% url 'profile without auth' %}">Profile</a></li>
+            {% endif %}
+        </ul>
+        {% if messages %}
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        {% endif %}
+        {% block page_content %}
+        {% endblock %}
+        {% include 'base/footer.html' %}

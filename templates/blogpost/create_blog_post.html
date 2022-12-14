@@ -1,0 +1,35 @@
+{% extends 'base/base1.html' %}
+{% load static %}
+{% block page_content %}
+
+
+   {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div>
+            <h1>Create new blog post</h1>
+            <form action="{% url 'create post' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                {#        <input type="submit" value="" class="submit">#}
+                <button type="submit" class="submit">Create new blog post</button>
+            </form>
+            {#            script is for hidden field about author, can't crate blogpost without script#}
+            <script>
+                let name = "{{ user.id }}"
+                document.getElementById("author").value = name;
+            </script>
+
+{#            {% if messages %}#}
+{#                <ul class="messages">#}
+{#                    {% for message in messages %}#}
+{#                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            {% endif %}#}
+{#            todo: correct messages if page work without them#}
+        </div>
+    </div>
+{% endblock %}

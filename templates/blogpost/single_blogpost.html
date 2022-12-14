@@ -1,0 +1,40 @@
+{% extends 'base/base1.html' %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div id="blog">
+            <div id="articles">
+                <ul>
+                    <li>
+                        <div>
+                            <div><span class="date">{{ object.date_created }}</span> <span class="connect"> <a
+                                    href="https://www.facebook.com/predaynatatak"
+                                    class="facebook">Facebook</a> </span>
+                                <h1>{{ object.title }}</h1>
+                                {% if object.author.full_name %}
+                                    <h2>by {{ object.author.full_name }}</h2>
+                                {% else %}
+                                    <h2>by {{ object.author.username }}</h2>
+                                {% endif %}
+                                {% if object.blog_image %}
+                                    <p><img src="/media/{{ object.blog_image }}" alt="{{ object.title }}"></p>
+                                {% endif %}
+                                <p>{{ object.text }}</p>
+                                {% if object.tagged_posts.all %}
+                                    <p> Tags: </p>
+                                    {% for tag in object.tagged_posts.all %}
+                                        <p> {{ tag.name }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

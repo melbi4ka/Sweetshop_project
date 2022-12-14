@@ -1,0 +1,45 @@
+{% load static %}
+<div id="footer">
+    <div class="section">
+        <div>
+            <div class="aside">
+                <div>
+                    <div><b>Subscribe <span>for our</span> </b> <a href="{% url 'newsletters' %}"> Subscribe </a>
+                        <b>Newsletter</b>
+                    </div>
+                </div>
+            </div>
+            <div class="connect"><span>Follow Us</span>
+                <ul>
+                    <li><a href="https://www.facebook.com/predaynatatak" class="facebook">Facebook</a></li>
+                    <li><a href="https://www.facebook.com/predaynatatak" class="twitter">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="featured">
+        {% for searched in searched_qs %}
+            {% for single_search in searched %}
+                <ul>
+                <li><img src="media/{{ single_search.blog_image }}" alt="fruit-cake"></a>
+                    <h2><a href="{% url 'single blog post' single_search.pk %}">{{ single_search.title }}</a></h2>
+
+                    <p>{{ single_search.text }}<a href="{% url 'single blog post' single_search.pk %}" class="readmore">read
+                        more</a></p>
+                </li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    </div>
+    <div id="navigation">
+        <div>
+            <p>Copyright &copy; information <a href="{% url 'index' %}">Sweet Rony</a> All rights reserved |
+                Website
+                Template By <a
+                        target="_blank" href="http://www.freewebsitetemplates.com/">freewebsitetemplates.com</a>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

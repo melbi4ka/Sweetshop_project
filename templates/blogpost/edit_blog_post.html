@@ -1,0 +1,24 @@
+{% extends 'base/base1.html' %}
+{% load static %}
+{% block page_content %}
+
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div>
+            <h1> Edit blog post "{{ object.title }}"</h1>
+            <form action="{% url 'edit post' pk=object.pk %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Edit blogpost</button>
+            </form>
+            {#<script>#}
+            {#    let name = "{{ user.id }}"#}
+            {#    document.getElementById("author").value = name;#}
+            {#</script>#}
+        </div>
+    </div>
+{% endblock %}

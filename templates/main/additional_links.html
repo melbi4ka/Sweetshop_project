@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div>
+            {% if help %}
+                <h1>{{ help.section_name|capfirst }}</h1>
+                <p>{{ help.section_description }}</p>
+            {% endif %}
+
+            {% if terms_of_use %}
+                <h1>{{ terms_of_use.section_name|capfirst }}</h1>
+                <p>{{ terms_of_use.section_description }}</p>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+{% endblock %}

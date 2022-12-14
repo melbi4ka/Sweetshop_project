@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div>
+            <h1>Search result</h1>
+            {% if products %}
+                {% for product in products %}
+                    <h1><a href="{% url 'product details' product.pk product.slug %}">{{ product.name }}</a></h1>
+                {% endfor %}
+            {% endif %}
+
+            {% if blogposts %}
+                {% for blogpost in blogposts %}
+                    <h1><a href="{% url 'single blog post' blogpost.pk %}">{{ blogpost.title }}</a></h1>
+                {% endfor %}
+            {% endif %}
+
+            {% if not products and not blogposts %}
+                <h1> No information to show</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

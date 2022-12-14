@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% load placeholders %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}{#<!DOCTYPE html>#}
+    </div>
+    </div>
+    <div id="content">
+        <div id="services">
+            <div class="aside">
+                <h1>Our {{ services.section_name|capfirst }}</h1>
+                <p>{{ services.section_description }}</p>
+                {% if services.subsections.all %}
+                    {% for service in services.subsections.all %}
+                        <span>{{ service.subsection_name|capfirst }}</span>
+                        <p>{{ service.subsection_description }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="section">
+                <div id="visitshop">
+                    <div>
+                        <p><span>Sweets from the heart</span> Treat your loveones</p>
+                        <a href="{% url 'product type' %}" class="visit">More sweets</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

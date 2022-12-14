@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div>
+            <h1>Sorry. The page you are looking for does not exist. But you can click the button bellow to go back to home page. </h1>
+            <a href="{% url 'product type' %}" class="view">view all</a></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load placeholders %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div class="home">
+            <div class="aside">
+                <h1>{{ about_one.section_name }}</h1>
+                {% if about_one.subsection.all %}
+                    {% for subsection in about_one.subsection.all %}
+                        <span>{{ subsection.subsection_name|capfirst }}</span>
+                        <p>{{ subsection.subsection_description }}</p>
+                    {% endfor %}
+                {% else %}
+                    <p>{{ about_one.section_description }}<a href="{% url 'product type' %}" class="readmore"> view
+                        more</a></p>
+                {% endif %}
+            </div>
+            <div class="section">
+                <div>
+                    <h2>{{ about_two.section_name }}</h2>
+                    {% if about_two.subsection.all %}
+                        {% for subsection in about_two.subsection.all %}
+                            <span>{{ subsection.subsection_name|capfirst }}</span>
+                            <p>{{ subsection.subsection_description }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>{{ about_two.section_description }}.</p>
+                    {% endif %}
+                </div>
+                <ul>
+                    <li class="first"><a href="{% url 'product type' %}"><img src="{% static 'images/cake.jpg' %}"
+                                                                              alt=""></a></li>
+                    <li><a href="{% url 'product type' %}"><img src="{% static 'images/burgercake.jpg' %}" alt=""></a>
+                    </li>
+                    <li><a href="{% url 'product type' %}"><img src="{% static 'images/cupcake.jpg' %}" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

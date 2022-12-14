@@ -1,0 +1,26 @@
+{% extends 'base/base1.html' %}
+{% load static %}
+{% block page_content %}
+
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div>
+            <h1>Contact us</h1>
+            <div id="visitshop">
+                <div>
+                    <p><span>Sweets from the heart</span> Treat your loveones</p>
+                    <a href="{% url 'product type' %}" class="visit">More sweets</a></div>
+            </div>
+            <form action="{% url 'contact' %}" method="POST">
+                <p>If you need assistance feel free to e-mail us. <span>Our expert support team will answer all yor questions.</span>
+                </p>
+                {{ form }}
+                {% csrf_token %}
+                <input type="submit" value="" class="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

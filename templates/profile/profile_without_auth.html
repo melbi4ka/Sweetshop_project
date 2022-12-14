@@ -1,0 +1,26 @@
+{% extends 'base/base1.html' %}
+{% load placeholders %}
+{% load static %}
+{% block page_content %}
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div id="services">
+            <div class="aside">
+                <h1>Wellcome to our site</h1>
+
+
+                <h1>Register here <a href="{% url 'register user' %}"><button>Register</button></a></h1>
+{#                <form action="{% url 'edit profile' pk=object.pk %}" method="POST">#}
+{#                    {{ form }}#}
+{#                    <input type="submit" value="EDIT" class="submitbtn">#}
+{#                    {% csrf_token %}#}
+            </div>
+            <div class="section">
+                <h1></h1>
+                <h1>Sign in here <a href="{% url 'login user' %}"><button>Sign in</button></a></h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}

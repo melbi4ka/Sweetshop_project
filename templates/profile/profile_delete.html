@@ -1,0 +1,29 @@
+{% extends 'base/base1.html' %}
+{% load placeholders %}
+{% load static %}
+{% block page_content %}
+
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div id="services">
+            <div class="aside">
+
+                {% if object.first_name %}
+                    <h1>{{ object.first_name }} are you sure you want to delete this profile?</h1>
+                {% else %}
+                    <h1>Are you sure you want to delete this profile?</h1>
+                {% endif %}
+
+                <form action="{% url 'delete profile' pk=object.pk %}" method="POST">
+                    {{ form }}
+                    <input type="submit" value="DELETE" class="submitbtn">
+                    {% csrf_token %}
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

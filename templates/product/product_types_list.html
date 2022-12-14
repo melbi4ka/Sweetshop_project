@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div>
+            <h1>The Pastry shop</h1>
+        {% if product_list %}
+            {% for product in product_list %}
+                <ul>
+                    <li>
+                        <div>
+                            <div>
+                                <h2><a href="{% url 'product details' product.pk product.slug %}">{{ product.name }}</a></h2>
+                                <p>{{ product.description|linebreaks|safe|truncatewords:10 }}</p>
+                                {% if product.description != product.description|truncatewords:10 %}
+                                    <a class="readmore" href="{% url 'product details' product.pk product.slug %}">read
+                                        more...</a>
+                                {% endif %}
+                                <p></p>
+
+                                <a href="{% url 'product details' product.pk product.slug %}" class="view">view</a>
+                            </div>
+                            <a href="#"><img src="/media/{{ product.image }}" alt="{{ product.name }}"></a></div>
+                    </li>
+                </ul>
+            {% endfor %}
+            <div style="text-align: left;">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}"><</a>
+                {% endif %}
+                <span>{{ page_obj.number }}</span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">></a>
+                {% endif %}
+            </div>
+        {% else %}
+            <h2>We'll have new products soon</h2>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div id="blog">
+            <div id="articles">
+                <ul>
+                    {% for obj in object_list %}
+                        <li>
+                            <div>
+                                <div><span class="date">{{ obj.date_created }}</span> <span class="connect"> <a
+                                        href="https://www.facebook.com/predaynatatak"
+                                        class="facebook">Facebook</a> </span>
+                                    <h1><a href="{% url 'single blog post' obj.pk %}">{{ obj.title }}</a></h1>
+                                    {% if obj.author.full_name %}
+                                        <h2>by {{ obj.author.full_name }}</h2>
+                                    {% else %}
+                                        <h2>by {{ obj.author.username }}</h2>
+                                    {% endif %}
+                                    {% if obj.blog_image %}
+                                        <p><img src="/media/{{ obj.blog_image }}" alt="{{ obj.title }}"></p>
+                                    {% endif %}
+{#                                    <p>{{ obj.text }}</p>#}
+                                    <p>{{ obj.text|linebreaks|safe|truncatewords:30 }}</p>
+                                    {% if obj.text != obj.text|truncatewords:30 %}
+                                        <p><a class="readmore" href="{% url 'single blog post' obj.pk %}">read more...</a></p>
+                                    {% endif %}
+
+                                    {% if obj.tagged_posts.all %}
+                                        <p> Tags: </p>
+                                        {% for tag in obj.tagged_posts.all %}
+                                            <p> {{ tag.name }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <div class="section"><a href="{% url 'create post' %}" class="newpost">Create new
+                                        blog post </a>
+                                    </div>
+                                    {% if obj.author == request.user %}
+                                        <div class="section"><a href="{% url 'edit post' pk=obj.pk %}" class="newpost">Edit
+                                            blog post</a><a href="{% url 'delete post' pk=obj.pk %}" class="oldpost">Delete
+                                            blog post</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div style="text-align: left;">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}"><</a>
+                    {% endif %}
+                    <span>{{ page_obj.number }}</span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

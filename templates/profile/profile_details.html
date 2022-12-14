@@ -1,0 +1,46 @@
+{% extends 'base/base1.html' %}
+{% load placeholders %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div id="services">
+            <div class="aside">
+                <h1>Wellcome to {{ object.username }} details page</h1>
+                <span>First name: </span>
+                {% if object.first_name %}
+                    <p>{{ object.first_name }}</p>
+                {% else %}
+                    <p>Please fill in the required information</p>
+                {% endif %}
+                <span>Last name: </span>
+                {% if object.last_name %}
+                    <p>{{ object.last_name }}</p>
+                {% else %}
+                    <p>Please fill in the required information</p>
+                {% endif %}
+
+                <span>Address: </span>
+                {% if object.get_full_address %}
+                    <p>{{ object.get_full_address }}</p>
+                {% else %}
+                    <p>Your address is not full. Please fill in the required information</p>
+                {% endif %}
+
+                <span>Phone number: </span>
+                {% if object.phone_number %}
+                    <p>{{ object.phone_number }}</p>
+                {% else %}
+                    <p>Please fill in the required information.</p>
+                {% endif %}
+            </div>
+            <div class="section">
+                <h1>Edit your profile here <a href="{% url 'edit profile' pk=object.pk %}"><button>Edit profile</button></a></h1>
+                <h1>Delete your profile here <a href="{% url 'delete profile' pk=object.pk %}"><button>Delete profile</button></a></h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% load static %}
+{% if request.user.is_authenticated %}
+        <div class="section"><img src="{% static 'images/wedding-cupcakes-small.jpg' %}"
+                                              alt="wedding cupcakes"></div>
+    {% else %}
+        <div class="section"><img src="{% static 'images/wedding-cupcakes-small_no_discount.jpg' %}"
+                                              alt="wedding cupcakes"></div>
+    {% endif %}
+

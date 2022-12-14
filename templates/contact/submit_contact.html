@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+    {% include 'base/discounts.html' %}
+    </div>
+    </div>
+    <div id="content">
+        <div>
+            {% if request.user.is_authenticated %}
+                {% if user.first_name %}
+                    <h1>Thanks {{ user.first_name }} for filling out our form!</h1>
+                {% else %}
+                    <h1>Thanks {{ user.username }} for filling out our form!</h1>
+                {% endif %}
+            {% else %}
+                    <h1>Thanks {{ object.name }} for filling out our form!</h1>
+            {% endif %}
+
+            <div id="visitshop">
+                <div>
+                    <p><span>Sweets from the heart</span> Treat your loveones</p>
+                    <a href="{% url 'product type' %}" class="visit">More sweets</a></div>
+            </div>
+            <form>
+                <p>We will look over your message and get back to you by tomorrow. <span>In the meantime, you can check the FAQ section, look over our new product collection or browse through our latest blog posts.</span>
+                </p>
+                <input type="submit" value="" class="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}
