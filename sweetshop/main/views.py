@@ -87,4 +87,9 @@ def search(request):
         else:
             return render(request, 'main/search.html')
 
+def handler404_view(request, exception):
+    return render(request, 'not-found.html', status=404)
 
+
+def handler500_view(request):
+    return render(request, 'not-found.html', status=500)
