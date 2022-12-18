@@ -9,7 +9,7 @@
         <div>
             {% if request.user.is_authenticated %}
                 {% if user.first_name %}
-                    <h1>Thanks {{ user.first_name }} for filling out our form!</h1>
+                    <h1>Thanks {{ user.first_name|capfirst }} for filling out our form!</h1>
                 {% else %}
                     <h1>Thanks {{ user.username }} for filling out our form!</h1>
                 {% endif %}

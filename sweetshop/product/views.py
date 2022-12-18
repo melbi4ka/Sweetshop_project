@@ -7,7 +7,7 @@ from django.views import generic as views
 from sweetshop.product.models import ProductType, Product
 
 
-# Create your views here.
+
 class ProductTypeView(views.ListView):
     model = ProductType
     template_name = 'product/product_types.html'

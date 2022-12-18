@@ -9,7 +9,7 @@
     <div id="content">
         <div id="services">
             <div class="aside">
-                <h1>Wellcome to {{ object.username }} details page</h1>
+                <h1>Wellcome to {{ object.username|capfirst }} details page</h1>
                 <span>First name: </span>
                 {% if object.first_name %}
                     <p>{{ object.first_name }}</p>
